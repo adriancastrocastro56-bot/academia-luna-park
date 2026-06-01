@@ -110,14 +110,26 @@
   }
 
   .sidebar-logo {
-    padding:1.5rem;
+    padding:1.2rem 1.5rem;
     border-bottom:1px solid var(--gris-borde);
     text-align:center;
   }
 
+  .sidebar-logo img {
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    border:2px solid rgba(204,0,0,0.4);
+    margin-bottom:8px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
   .sidebar-logo h2 {
     font-family:'Bebas Neue',cursive;
-    font-size:1.3rem;
+    font-size:1.1rem;
     letter-spacing:3px;
   }
 
@@ -819,6 +831,7 @@
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="sidebar-logo">
+        <img src="logo.jpg" alt="Luna Park BJJ" onerror="this.style.display='none'">
         <h2>LUNA <span>PARK</span></h2>
         <small>Admin BJJ</small>
       </div>
