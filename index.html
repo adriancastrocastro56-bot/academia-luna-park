@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto Social Luna Park | BJJ & Judo</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rojo: #CC0000;
+    --rojo-oscuro: #990000;
+    --negro: #0A0A0A;
+    --negro-suave: #111111;
+    --blanco: #FFFFFF;
+    --gris: #1A1A1A;
+    --gris-medio: #2A2A2A;
+    --gris-texto: #AAAAAA;
+    --acento: #FF1111;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--negro);
+    color: var(--blanco);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(204,0,0,0.3);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .nav-logo-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    color: white;
+    border: 2px solid var(--blanco);
+  }
+
+  .nav-titulo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    color: var(--blanco);
+    line-height: 1.1;
+  }
+
+  .nav-titulo span {
+    color: var(--rojo);
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gris-texto);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--rojo); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--negro);
+    padding-top: 70px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 60%, rgba(204,0,0,0.12) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.02) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.02) 60px);
+  }
+
+  .hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--rojo);
+    color: var(--rojo);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    margin-bottom: 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+  }
+
+  .hero-logo {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--rojo);
+    box-shadow: 0 0 60px rgba(204,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gris);
+  }
+
+  .hero-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-logo-placeholder {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    color: var(--blanco);
+    text-align: center;
+    line-height: 1;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    line-height: 0.9;
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title .rojo { color: var(--rojo); }
+
+  .hero-sub {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    color: var(--gris-texto);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--gris-texto);
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primario {
+    background: var(--rojo);
+    color: white;
+    padding: 14px 36px;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-primario:hover {
+    background: var(--acento);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(204,0,0,0.5);
+  }
+
+  .btn-secundario {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 14px 36px;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-secundario:hover {
+    border-color: var(--rojo);
+    color: var(--rojo);
+  }
+
+  .scroll-line {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gris-texto);
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--rojo), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* ===== SECTIONS GENERAL ===== */
+  section {
+    padding: 100px 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    color: var(--rojo);
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 3px;
+    line-height: 1;
+  }
+
+  .section-title .rojo { color: var(--rojo); }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--rojo);
+    margin: 1.5rem auto;
+  }
+
+  .max-w {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ===== MISION VISION ===== */
+  .mv-section {
+    background: var(--negro-suave);
+    border-top: 1px solid rgba(204,0,0,0.2);
+    border-bottom: 1px solid rgba(204,0,0,0.2);
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .mv-card {
+    background: var(--gris);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mv-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--rojo);
+  }
+
+  .mv-card:first-child { border-right: 1px solid rgba(255,255,255,0.05); }
+
+  .mv-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .mv-card h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    margin-bottom: 1rem;
+  }
+
+  .mv-card p {
+    color: var(--gris-texto);
+    line-height: 1.8;
+    font-weight: 300;
+    font-size: 0.95rem;
+  }
+
+  .mv-card p strong {
+    color: var(--blanco);
+    font-weight: 500;
+  }
+
+  /* ===== HORARIOS ===== */
+  .horarios-section {
+    background: var(--negro);
+  }
+
+  .horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5px;
+    background: rgba(204,0,0,0.2);
+    border: 1.5px solid rgba(204,0,0,0.2);
+  }
+
+  .horario-card {
+    background: var(--negro);
+    padding: 2rem;
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .horario-card:hover { background: var(--gris); }
+
+  .horario-dia {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    color: var(--rojo);
+    margin-bottom: 0.5rem;
+  }
+
+  .horario-hora {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+  }
+
+  .horario-clase {
+    font-size: 0.85rem;
+    color: var(--gris-texto);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .horario-badge {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: rgba(204,0,0,0.15);
+    border: 1px solid rgba(204,0,0,0.3);
+    color: var(--rojo);
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  /* ===== PROFESORES ===== */
+  .profesores-section {
+    background: var(--negro-suave);
+  }
+
+  .profesores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .profesor-card {
+    background: var(--gris);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+
+  .profesor-card:hover {
+    border-top-color: var(--rojo);
+    transform: translateY(-4px);
+  }
+
+  .profesor-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gris-medio);
+    border: 2px solid rgba(204,0,0,0.4);
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    color: var(--rojo);
+  }
+
+  .profesor-nombre {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--blanco);
+  }
+
+  .profesor-rol {
+    font-size: 0.75rem;
+    color: var(--gris-texto);
+    margin-top: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* ===== PRECIOS ===== */
+  .precios-section {
+    background: var(--negro);
+  }
+
+  .precios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .precio-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .precio-card.destacado {
+    border-color: var(--rojo);
+    background: rgba(204,0,0,0.05);
+  }
+
+  .precio-card.destacado::before {
+    content: 'MÁS POPULAR';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rojo);
+    color: white;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    padding: 4px 12px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .precio-tipo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--gris-texto);
+    margin-bottom: 1rem;
+  }
+
+  .precio-monto {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    color: var(--blanco);
+    line-height: 1;
+  }
+
+  .precio-monto sup {
+    font-size: 1.5rem;
+    vertical-align: super;
+    color: var(--rojo);
+  }
+
+  .precio-periodo {
+    font-size: 0.75rem;
+    color: var(--gris-texto);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .precio-nota {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--gris-texto);
+    line-height: 1.5;
+  }
+
+  /* ===== LOGROS ===== */
+  .logros-section {
+    background: var(--negro-suave);
+    border-top: 1px solid rgba(204,0,0,0.2);
+    border-bottom: 1px solid rgba(204,0,0,0.2);
+  }
+
+  .logros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .logro-card {
+    background: var(--gris);
+    padding: 2rem;
+    border-left: 4px solid var(--rojo);
+    position: relative;
+  }
+
+  .logro-medalla {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .logro-titulo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+  }
+
+  .logro-desc {
+    font-size: 0.85rem;
+    color: var(--gris-texto);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .logro-year {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    color: rgba(204,0,0,0.3);
+    letter-spacing: 2px;
+  }
+
+  /* ===== CONTACTO ===== */
+  .contacto-section {
+    background: var(--negro);
+  }
+
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contacto-info h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+  }
+
+  .contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contacto-icono {
+    width: 40px;
+    height: 40px;
+    background: rgba(204,0,0,0.15);
+    border: 1px solid rgba(204,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .contacto-texto strong {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rojo);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .contacto-texto p {
+    color: var(--gris-texto);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .social-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gris);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--blanco);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    transition: all 0.2s;
+  }
+
+  .social-btn:hover {
+    background: var(--rojo);
+    border-color: var(--rojo);
+  }
+
+  .whatsapp-cta {
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.3);
+    color: #25D366;
+    text-decoration: none;
+    padding: 16px 32px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    margin-top: 2rem;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .whatsapp-cta:hover {
+    background: rgba(37,211,102,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.2);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--negro-suave);
+    border-top: 1px solid rgba(204,0,0,0.3);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo span { color: var(--rojo); }
+
+  .footer-sub {
+    font-size: 0.7rem;
+    color: var(--gris-texto);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(170,170,170,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .mv-grid { grid-template-columns: 1fr; }
+    .precios-grid { grid-template-columns: 1fr; }
+    .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .profesores-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-placeholder" id="navLogoContainer">LP</div>
+    <div class="nav-titulo">
+      LUNA PARK
+      <span>PROYECTO SOCIAL BJJ</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#profesores">Profesores</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#logros">Logros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Costa Rica · Judo · Jiu-Jitsu · Defensa Personal</div>
+    <div class="hero-logo" id="heroLogoContainer">
+      <div class="hero-logo-placeholder">LP</div>
+    </div>
+    <h1 class="hero-title">
+      PROYECTO SOCIAL<br>
+      <span class="rojo">LUNA PARK</span>
+    </h1>
+    <p class="hero-sub">BJJ · Judo · Defensa Personal</p>
+    <p class="hero-desc">
+      Formando campeones desde los barrios. Un espacio donde el arte marcial transforma vidas, construye carácter y crea atletas de élite desde la niñez.
+    </p>
+    <div class="hero-btns">
+      <a href="#horarios" class="btn-primario">Ver Horarios</a>
+      <a href="https://wa.me/50672277463?text=Hola,%20quiero%20información%20sobre%20Proyecto%20Social%20Luna%20Park" target="_blank" class="btn-secundario">Información por WhatsApp</a>
+    </div>
+  </div>
+  <div class="scroll-line">scroll</div>
+</section>
+
+<!-- MISIÓN Y VISIÓN -->
+<section class="mv-section">
+  <div class="max-w section-header">
+    <div class="section-tag">Nuestra Esencia</div>
+    <h2 class="section-title">MISIÓN &amp; <span class="rojo">VISIÓN</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="max-w mv-grid">
+    <div class="mv-card">
+      <span class="mv-icon">🥋</span>
+      <h3>Misión</h3>
+      <p>
+        Ofrecer <strong>acceso gratuito o de bajo costo</strong> a las artes marciales —Judo, Jiu-Jitsu Brasileño y Defensa Personal— a niños y jóvenes de barrios marginales de Costa Rica. 
+        Creemos que el tatami es un espacio seguro donde se forja la disciplina, el respeto y el carácter que la sociedad necesita. 
+        <strong>No importa el origen, importa la actitud.</strong>
+      </p>
+    </div>
+    <div class="mv-card">
+      <span class="mv-icon">🏆</span>
+      <h3>Visión</h3>
+      <p>
+        Ser el <strong>semillero de campeones más importante de Costa Rica</strong>, reconocido no solo por los títulos nacionales e internacionales de sus atletas, sino por el impacto social que genera. 
+        Visualizamos comunidades transformadas donde los niños de hoy son los <strong>líderes, profesionales y atletas de élite</strong> del mañana, orgullosos de sus raíces y forjados en el tatami.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios-section" id="horarios">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Entrenamientos</div>
+      <h2 class="section-title">HORARIO <span class="rojo">SEMANAL</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="horarios-grid">
+      <div class="horario-card">
+        <div class="horario-badge">Judo</div>
+        <div class="horario-dia">Lunes</div>
+        <div class="horario-hora">6:00 PM — 8:00 PM</div>
+        <div class="horario-clase">Judo</div>
+      </div>
+      <div class="horario-card">
+        <div class="horario-badge">BJJ GI</div>
+        <div class="horario-dia">Martes</div>
+        <div class="horario-hora">7:30 PM — 9:00 PM</div>
+        <div class="horario-clase">Jiu-Jitsu Brasileño con Gi</div>
+      </div>
+      <div class="horario-card">
+        <div class="horario-badge">Defensa</div>
+        <div class="horario-dia">Miércoles</div>
+        <div class="horario-hora">7:30 PM — 9:00 PM</div>
+        <div class="horario-clase">Defensa Personal</div>
+      </div>
+      <div class="horario-card">
+        <div class="horario-badge">Open Mat</div>
+        <div class="horario-dia">Jueves</div>
+        <div class="horario-hora">6:00 PM — 8:00 PM</div>
+        <div class="horario-clase">Open Mat · Judo / Jiu-Jitsu con Gi</div>
+      </div>
+      <div class="horario-card">
+        <div class="horario-badge">No-GI</div>
+        <div class="horario-dia">Viernes</div>
+        <div class="horario-hora">6:00 PM — 8:00 PM</div>
+        <div class="horario-clase">Jiu-Jitsu No-Gi</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.8rem;color:var(--gris-texto);letter-spacing:2px;text-transform:uppercase;">
+      📍 Instalaciones del Gimnasio de Judo · Plaza Cleto González Víquez
+    </p>
+  </div>
+</section>
+
+<!-- PROFESORES -->
+<section class="profesores-section" id="profesores">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Cuerpo Técnico</div>
+      <h2 class="section-title">NUESTROS <span class="rojo">PROFESORES</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="profesores-grid">
+      <div class="profesor-card">
+        <div class="profesor-avatar">AC</div>
+        <div class="profesor-nombre">Adrián Castro</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+      <div class="profesor-card">
+        <div class="profesor-avatar">CS</div>
+        <div class="profesor-nombre">Charlie Stanley</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+      <div class="profesor-card">
+        <div class="profesor-avatar">DV</div>
+        <div class="profesor-nombre">Darian Valverde</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+      <div class="profesor-card">
+        <div class="profesor-avatar">DC</div>
+        <div class="profesor-nombre">Daniel Carvajal</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+      <div class="profesor-card">
+        <div class="profesor-avatar">OM</div>
+        <div class="profesor-nombre">Osman Murillo</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+      <div class="profesor-card">
+        <div class="profesor-avatar">OsM</div>
+        <div class="profesor-nombre">Omar Murillo</div>
+        <div class="profesor-rol">Instructor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios-section" id="precios">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Acceso para todos</div>
+      <h2 class="section-title">MENSUALIDAD <span class="rojo">2025</span></h2>
+      <div class="divider"></div>
+      <p style="color:var(--gris-texto);font-size:0.9rem;max-width:500px;margin:0 auto;line-height:1.7;font-weight:300;">
+        Precios accesibles porque creemos que las artes marciales son un derecho, no un privilegio.
+      </p>
+    </div>
+    <div class="precios-grid">
+      <div class="precio-card destacado">
+        <div class="precio-tipo">Niños</div>
+        <div class="precio-monto"><sup>₡</sup>10.000</div>
+        <div class="precio-periodo">por mes</div>
+        <div class="precio-nota">Acceso a todas las clases de la semana. Formamos campeones desde temprana edad.</div>
+      </div>
+      <div class="precio-card">
+        <div class="precio-tipo">Adultos</div>
+        <div class="precio-monto"><sup>₡</sup>15.000</div>
+        <div class="precio-periodo">por mes</div>
+        <div class="precio-nota">Acceso completo al programa de entrenamiento adulto. Nunca es tarde para empezar.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="https://wa.me/50672277463?text=Hola,%20quiero%20inscribirme%20en%20Proyecto%20Social%20Luna%20Park" target="_blank" class="btn-primario">
+        Inscribirme Ahora →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LOGROS -->
+<section class="logros-section" id="logros">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Orgullo de la academia</div>
+      <h2 class="section-title">NUESTROS <span class="rojo">LOGROS</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="logros-grid">
+      <div class="logro-card">
+        <div class="logro-medalla">🥇</div>
+        <div class="logro-titulo">Campeones Nacionales de Judo</div>
+        <div class="logro-desc">Atletas formados en Luna Park han conquistado podios en los principales torneos nacionales de judo del país.</div>
+        <div class="logro-year">2024</div>
+      </div>
+      <div class="logro-card">
+        <div class="logro-medalla">🏅</div>
+        <div class="logro-titulo">Representación Internacional BJJ</div>
+        <div class="logro-desc">Nuestros atletas han representado a Costa Rica en competencias internacionales de Jiu-Jitsu Brasileño con excelentes resultados.</div>
+        <div class="logro-year">2024</div>
+      </div>
+      <div class="logro-card">
+        <div class="logro-medalla">🌟</div>
+        <div class="logro-titulo">Impacto Social Barrial</div>
+        <div class="logro-desc">Más de 50 niños de comunidades vulnerables han encontrado en el tatami una alternativa de vida positiva y transformadora.</div>
+        <div class="logro-year">2023–2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto-section" id="contacto">
+  <div class="max-w">
+    <div class="section-header">
+      <div class="section-tag">Encuéntranos</div>
+      <h2 class="section-title">CONTACTO &amp; <span class="rojo">UBICACIÓN</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <h3>Hablemos</h3>
+        <div class="contacto-item">
+          <div class="contacto-icono">📍</div>
+          <div class="contacto-texto">
+            <strong>Ubicación</strong>
+            <p>Instalaciones del Gimnasio de Judo<br>Plaza Cleto González Víquez<br>San José, Costa Rica</p>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-icono">📱</div>
+          <div class="contacto-texto">
+            <strong>WhatsApp</strong>
+            <p>7227-7463</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/lunaparkbjj506" target="_blank" class="social-btn">
+            📸 Instagram
+          </a>
+        </div>
+        <a href="https://wa.me/50672277463?text=Hola,%20quiero%20información%20sobre%20Proyecto%20Social%20Luna%20Park" target="_blank" class="whatsapp-cta">
+          💬 Escribir al WhatsApp
+        </a>
+      </div>
+      <div>
+        <div style="background:var(--gris);padding:2rem;border:1px solid rgba(204,0,0,0.2);">
+          <h3 style="font-family:'Bebas Neue',cursive;font-size:1.5rem;letter-spacing:2px;margin-bottom:1.5rem;">¿Listo para el tatami?</h3>
+          <p style="color:var(--gris-texto);line-height:1.8;font-weight:300;font-size:0.9rem;margin-bottom:1.5rem;">
+            Si sos padre, madre o estás interesado en unirte al proyecto, escríbenos por WhatsApp. Estamos aquí para orientarte sobre clases, horarios, inscripción y todo lo que necesitás saber.
+          </p>
+          <p style="color:var(--gris-texto);line-height:1.8;font-weight:300;font-size:0.9rem;margin-bottom:1.5rem;">
+            <strong style="color:var(--blanco);">Primera clase es gratis.</strong> Ven, conoce el tatami y descubre si las artes marciales son para vos.
+          </p>
+          <a href="https://wa.me/50672277463?text=Hola,%20quiero%20hacer%20mi%20primera%20clase%20gratis%20en%20Proyecto%20Social%20Luna%20Park" target="_blank" class="btn-primario" style="display:inline-block;">
+            Reservar Clase de Prueba
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">PROYECTO SOCIAL <span>LUNA PARK</span></div>
+  <div class="footer-sub">BJJ · Judo · Defensa Personal · Costa Rica</div>
+  <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:2rem;">
+    <a href="https://www.instagram.com/lunaparkbjj506" target="_blank" style="color:var(--gris-texto);text-decoration:none;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;">Instagram</a>
+    <span style="color:rgba(204,0,0,0.3);">|</span>
+    <a href="https://wa.me/50672277463" target="_blank" style="color:var(--gris-texto);text-decoration:none;font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2025 Proyecto Social Luna Park · Todos los derechos reservados</div>
+</footer>
+
+<script>
+  // Logo dinámico — si existe logo.png en la misma carpeta, lo usa
+  const logoSrcs = ['logo.png', 'logo.jpg', 'logo.webp', 'logo.svg'];
+
+  function tryLogo(srcs, containers, placeholder) {
+    if (!srcs.length) return;
+    const img = new Image();
+    img.onload = () => {
+      containers.forEach(c => {
+        c.innerHTML = '';
+        const i = document.createElement('img');
+        i.src = img.src;
+        i.alt = 'Logo Luna Park';
+        i.style.cssText = 'width:100%;height:100%;object-fit:contain;border-radius:50%;';
+        c.appendChild(i);
+      });
+    };
+    img.onerror = () => tryLogo(srcs.slice(1), containers, placeholder);
+    img.src = srcs[0];
+  }
+
+  tryLogo(logoSrcs, [
+    document.getElementById('heroLogoContainer'),
+    document.getElementById('navLogoContainer')
+  ]);
+
+  // Animación de entrada suave
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.horario-card, .profesor-card, .logro-card, .precio-card, .mv-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
